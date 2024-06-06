@@ -10,7 +10,7 @@
 <body class="bg-gray-50">
     <!-- Full-Width Sticky Header -->
     <header class="flex justify-between items-center bg-white shadow p-6 sticky top-0 z-10">
-        <a href="{{ url_for('home') }}" class="text-2xl font-bold text-blue-600">Phishing Game</a>
+        <a href="{{ url_for('phishing_gamified') }}" class="text-2xl font-bold text-blue-600">Phishing Game</a>
             <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">            
             <div class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full white:bg-gray-600">
                 <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
@@ -37,9 +37,6 @@
         <div class="w-64 bg-white shadow-lg pt-18 text-lg font-medium">
             <nav class="mt-10">
                 <ul>
-                    <li>
-                        <a href="{{ url_for('home') }}" class="ml-3 block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-600 hover:text-white">Dashboard</a>
-                    </li>
                     <li>
                         <a href="{{ url_for('phishing_gamified') }}" class="ml-3 block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-600 hover:text-white">Phishing Game</a>
                     </li>

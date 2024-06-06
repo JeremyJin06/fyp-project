@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% block title %}Phishing Game{% endblock %}
+{% block content %}
+<div class="p-6 bg-white shadow-md rounded-md">
+    <div id="startContainer">
+        <h3 class="mb-5 text-xl font-medium text-gray-900 white:text-white">Difficulty Level</h3>
+        <ul class="grid grid-flow-col gap-6 md:grid-rows-3">
+            <li>
+                <input type="radio" id="hosting-small" name="difficultyLevel" value="beginner" class="hidden peer" required />
+                <label for="hosting-small" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer white:hover:text-gray-300 white:border-gray-700 white:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 white:text-gray-400 white:bg-gray-800 white:hover:bg-gray-700">                           
+                    <div class="block">
+                        <div class="w-full text-lg font-semibold">Beginner</div>
+                        <div class="w-full">Start from here if you are new to Phishing</div>
+                    </div>
+                    <svg class="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="hosting-big" name="difficultyLevel" value="intermediate" class="hidden peer">
+                <label for="hosting-big" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer white:hover:text-gray-300 white:border-gray-700 white:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 white:text-gray-400 white:bg-gray-800 white:hover:bg-gray-700">
+                    <div class="block">
+                        <div class="w-full text-lg font-semibold">Intermediate</div>
+                        <div class="w-full">Click here if you feel confident on your phishing knowledge</div>
+                    </div>
+                    <svg class="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="hosting-medium" name="difficultyLevel" value="hosting-medium" class="hidden peer">
+                <label for="hosting-medium" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer white:hover:text-gray-300 white:border-gray-700 white:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 white:text-gray-400 white:bg-gray-800 white:hover:bg-gray-700">
+                    <div class="block">
+                        <div class="w-full text-lg font-semibold">Professional</div>
+                        <div class="w-full">Go through the Professional level of the assessment </div>
+                    </div>
+                    <svg class="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </label>
+            </li>
+        </ul>
+        <button type="button" id="startButton" class="my-10 px-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Start</button>    
+    </div>
+    
+    <form id="gameForm" method="post" style="display: none;">
+        <div class="mb-4 text-xl font-semibold text-gray-900 white:text-white" id="question-container">What is my name?>
+        <!-- Questions will be dynamically inserted here -->
+        </div>
+        <input type="hidden" name="score" id="score" value="0">
+        <button type="submit" class="my-10 px-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Check</button>        
+    </form>
+</div>
+
+
+<div id="popup" tabindex="-1" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
+    <div class="relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md">
+        <div class="bg-white rounded-lg shadow-lg">
+            <button type="button" class="absolute top-3 right-3 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center" data-modal-hide="popup-modal">
+            </button>
+            <div class="p-4 md:p-5 text-center">                    
+                <h2 class="mb-5 text-2xl font-mono text-gray-500 white:text-gray-400" id="popup-title"></h2>
+                <h3 class="mb-5 text-base font-mono text-gray-500 white:text-gray-400" id="popup-message"></h3>
+                <button data-modal-hide="popup-modal" type="button" class="my-10 px-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" id="popup-close">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script>
+
+        document.getElementById('startButton').addEventListener('click', function() {
+            var difficultyLevel = document.querySelector('input[name="difficultyLevel"]:checked');
+            if (difficultyLevel) {
+              document.getElementById('startContainer').style.display = 'none';
+              document.getElementById('gameForm').style.display = 'block';
+              populateQuestions(difficultyLevel.value);
+            } else {
+              alert('Please select a difficulty level to start the questionnaire.');
+            }
+          });
+
+
+        const questions = [
+            {
+                question: "What is the primary goal of phishing attacks?",
+                hint:  "Think about what motivates attackers to create phishing campaigns.",
+                explanation: "Phishers exploit social engineering techniques to trick victims into taking actions that compromise their security.",
+                answers: [
+                    { text: "The primary goal of phishing attacks is to deceive users into revealing sensitive information (such as login credentials, credit card numbers, or personal data) by posing as a trustworthy entity.", correct: true },
+                    { text: "To install antivirus software on the victim’s computer.", correct: false },
+                    { text: "To promote legitimate products or services.", correct: false },
+                ]
+            },
+            {
+                question: "What is the purpose of a phishing email’s urgency or fear tactics?",
+                hint: "Consider how emotional manipulation plays a role in phishing.",
+                explanation: "By inducing panic, phishers hope victims won’t scrutinize the email’s legitimacy.",
+                answers: [
+                    { text: "To encourage recipients to share the email with others.", correct: false },
+                    { text: "To promote awareness about cybersecurity risks.", correct: false },
+                    { text: "Urgency or fear tactics in phishing emails aim to pressure recipients into acting quickly without thinking. Attackers create a sense of emergency, such as “Your account will be suspended unless you act now!”.", correct: true }
+                ]
+            },
+            {
+                question: "What is the term for a phishing attack that targets a specific organization or industry?",
+                hint: "Think about precision and customization.",
+                explanation: "Unlike generic phishing, targeted attacks require research and personalization.",
+                answers: [
+                    { text: "Generic phishing.", correct: false },
+                    { text: "Targeted phishing, also known as spear phishing, focuses on a particular organization, its employees, or industry. Attackers customize messages to increase success rates.", correct: true },
+                    { text: "Mass phishing.", correct: false },
+                ]
+            },
+            {
+                question: "Which type of phishing attack involves fraudulent phone calls?",
+                hint: "Consider the communication channel used in vishing.",
+                explanation: "Vishing relies on voice communication to deceive victims.",
+                answers: [
+                    { text: "SMS phishing.", correct: false },
+                    { text: "Vishing (voice phishing) occurs over the phone. Attackers impersonate legitimate entities, aiming to extract sensitive information from victims.", correct: true },
+                    { text: "Email phishing.", correct: false },
+                ]
+            },
+            {
+                question: "What is the purpose of a phishing landing page?",
+                hint: "Focus on the deceptive nature of landing pages.",
+                explanation: "Landing pages are the final destination where victims unwittingly provide information.",
+                answers: [
+                    { text: "To educate users about cybersecurity.", correct: false },
+                    { text: "To redirect users to legitimate websites.", correct: true },
+                    { text: "Phishing landing pages mimic legitimate sites to collect user credentials or other sensitive data. Victims unknowingly interact with these fake pages.", correct: true },
+                ]
+            },
+            {
+                question: "What is the key difference between phishing and pharming?",
+                hint: "Think about the underlying mechanism in pharming.",
+                explanation: "Pharming alters the domain resolution process.",
+                answers: [
+                    { text: "Phishing uses malicious attachments.", correct: false },
+                    { text: "Phishing involves deceptive emails or messages, while pharming manipulates DNS settings to redirect users to malicious websites without their knowledge.", correct: true },
+                    { text: " Pharming relies on social engineering.", correct: false },
+                ]
+            }
+        ];
+    
+        function showAlert(title, message) {
+            console.log("Title:", title);
+            console.log("Message:", message);
+            document.getElementById('popup-title').textContent = title;
+            document.getElementById('popup-message').textContent = message;
+            document.getElementById('popup').style.display = 'block';
+        }
+              
+    
+        let wrongAnswer = false;
+
+        document.getElementById('popup-close').addEventListener('click', function() {
+            document.getElementById('popup').style.display = 'none';
+            if (!wrongAnswer) {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    showQuestion(shuffledQuestions[currentQuestionIndex]);
+                } else {
+                    document.getElementById('score').value = score;
+                    document.getElementById('gameForm').submit();
+                }
+            }
+            // Reset the wrongAnswer flag
+            wrongAnswer = false;
+            updateButton(); // Update the button text
+        });
+
+        document.getElementById('gameForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const selectedAnswerIndex = document.querySelector('input[name="answer"]:checked').value;
+            if (questions[currentQuestionIndex].answers[selectedAnswerIndex].correct) {
+                score += 10;
+                showAlert("Explanation", questions[currentQuestionIndex].explanation);
+                // Reset the wrongAnswer flag
+                wrongAnswer = false;
+            } else {
+                showAlert("Hint", questions[currentQuestionIndex].hint);
+                // Set the wrongAnswer flag
+                wrongAnswer = true;
+            }
+            updateButton(); // Update the button text
+        });
+
+        function updateButton() {
+            const button = document.getElementById('popup-close');
+            if (wrongAnswer) {
+                button.textContent = "Try Again";
+            } else {
+                button.textContent = "Next";
+            }
+        }
+            
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+    
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+    
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+    
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+    
+            return array;
+        }
+    
+        // Shuffle the questions
+        let shuffledQuestions = shuffle(questions);
+    
+        let currentQuestionIndex = 0;
+        let score = 0;
+    
+    
+        function showQuestion(question) {
+            const questionContainer = document.getElementById('question-container');
+            questionContainer.innerHTML = `
+            <div>
+                <p class="text-2xl mb-5">${question.question}</p>
+                ${question.answers.map((answer, index) => `
+                    <div>
+                        <input type="radio" id="answer-${index}" name="answer" value="${index}">
+                        <label class="text-base" for="answer-${index}">${answer.text}</label>
+                    </div>
+                `).join('')}
+            </div>
+            `;
+        }
+    
+        showQuestion(shuffledQuestions[currentQuestionIndex]);
+    </script>
+    
+{% endblock %}
