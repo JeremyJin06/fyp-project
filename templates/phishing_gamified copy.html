@@ -6,8 +6,8 @@
         <h3 class="mb-5 text-xl font-medium text-gray-900 white:text-white">Difficulty Level</h3>
         <ul class="grid grid-flow-col gap-6 md:grid-rows-3">
             <li>
-                <input type="radio" id="hosting-small" name="difficultyLevel" value="beginner" class="hidden peer" required />
-                <label for="hosting-small" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer white:hover:text-gray-300 white:border-gray-700 white:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 white:text-gray-400 white:bg-gray-800 white:hover:bg-gray-700">                           
+                <input type="radio" id="difficulty-beginner" name="difficultyLevel" value="beginner" class="hidden peer" required />
+                <label for="difficulty-beginner" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer white:hover:text-gray-300 white:border-gray-700 white:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 white:text-gray-400 white:bg-gray-800 white:hover:bg-gray-700">                           
                     <div class="block">
                         <div class="w-full text-lg font-semibold">Beginner</div>
                         <div class="w-full">Start from here if you are new to Phishing</div>
@@ -18,8 +18,8 @@
                 </label>
             </li>
             <li>
-                <input type="radio" id="hosting-big" name="difficultyLevel" value="intermediate" class="hidden peer">
-                <label for="hosting-big" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer white:hover:text-gray-300 white:border-gray-700 white:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 white:text-gray-400 white:bg-gray-800 white:hover:bg-gray-700">
+                <input type="radio" id="difficulty-intermediate" name="difficultyLevel" value="intermediate" class="hidden peer">
+                <label for="difficulty-intermediate" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer white:hover:text-gray-300 white:border-gray-700 white:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 white:text-gray-400 white:bg-gray-800 white:hover:bg-gray-700">
                     <div class="block">
                         <div class="w-full text-lg font-semibold">Intermediate</div>
                         <div class="w-full">Click here if you feel confident on your phishing knowledge</div>
@@ -30,206 +30,196 @@
                 </label>
             </li>
             <li>
-                <input type="radio" id="hosting-medium" name="difficultyLevel" value="hosting-medium" class="hidden peer">
-                <label for="hosting-medium" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer white:hover:text-gray-300 white:border-gray-700 white:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 white:text-gray-400 white:bg-gray-800 white:hover:bg-gray-700">
+                <input type="radio" id="difficulty-professional" name="difficultyLevel" value="professional" class="hidden peer">
+                <label for="difficulty-professional" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer white:hover:text-gray-300 white:border-gray-700 white:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 white:text-gray-400 white:bg-gray-800 white:hover:bg-gray-700">
                     <div class="block">
                         <div class="w-full text-lg font-semibold">Professional</div>
-                        <div class="w-full">Go through the Professional level of the assessment </div>
-                    </div>
-                    <svg class="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </label>
-            </li>
-        </ul>
-        <button type="button" id="startButton" class="my-10 px-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Start</button>    
-    </div>
-    
-    <form id="gameForm" method="post" style="display: none;">
-        <div class="mb-4 text-xl font-semibold text-gray-900 white:text-white" id="question-container">What is my name?>
-        <!-- Questions will be dynamically inserted here -->
+                        <div class="w-full">Go through the Professional level
+                            of the assessment </div>
+                        </div>
+                        <svg class="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                    </label>
+                </li>
+            </ul>
+            <button type="button" id="startButton" class="my-10 px-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Start</button>    
         </div>
-        <input type="hidden" name="score" id="score" value="0">
-        <button type="submit" class="my-10 px-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Check</button>        
-    </form>
-</div>
-
-
-<div id="popup" tabindex="-1" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
-    <div class="relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md">
-        <div class="bg-white rounded-lg shadow-lg">
-            <button type="button" class="absolute top-3 right-3 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center" data-modal-hide="popup-modal">
-            </button>
-            <div class="p-4 md:p-5 text-center">                    
-                <h2 class="mb-5 text-2xl font-mono text-gray-500 white:text-gray-400" id="popup-title"></h2>
-                <h3 class="mb-5 text-base font-mono text-gray-500 white:text-gray-400" id="popup-message"></h3>
-                <button data-modal-hide="popup-modal" type="button" class="my-10 px-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" id="popup-close">Next</button>
+        
+        <form id="gameForm" method="post" style="display: none;">
+            <div class="mb-4 text-xl font-semibold text-gray-900 white:text-white" id="question-container">
+            <!-- Questions will be dynamically inserted here -->
+            </div>
+            <input type="hidden" name="score" id="score" value="0">
+            <button type="button" id="checkButton" class="my-10 px-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Check</button>        
+            <input type="hidden" name="title" id="title">
+        </form>
+    </div>
+    <div id="popup" tabindex="-1" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
+        <div class="relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md">
+            <div class="bg-white rounded-lg shadow-lg">
+                <button type="button" class="absolute top-3 right-3 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center" data-modal-hide="popup-modal">
+                </button>
+                <div class="p-4 md:p-5 text-center">                    
+                    <h2 class="mb-5 text-2xl font-mono text-gray-500 white:text-gray-400" id="popup-title"></h2>
+                    <h3 class="mb-5 text-base font-mono text-gray-500 white:text-gray-400" id="popup-message"></h3>
+                    <button data-modal-hide="popup-modal" type="button" class="my-10 px-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" id="popup-close">Next</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
-
-
+    
     <script>
-
-        document.getElementById('startButton').addEventListener('click', function() {
-            var difficultyLevel = document.querySelector('input[name="difficultyLevel"]:checked');
-            if (difficultyLevel) {
-              document.getElementById('startContainer').style.display = 'none';
-              document.getElementById('gameForm').style.display = 'block';
-              populateQuestions(difficultyLevel.value);
-            } else {
-              alert('Please select a difficulty level to start the questionnaire.');
-            }
-          });
-
-
-        const questions = [
-            {
-                question: "What is the primary goal of phishing attacks?",
-                hint:  "Think about what motivates attackers to create phishing campaigns.",
-                explanation: "Phishers exploit social engineering techniques to trick victims into taking actions that compromise their security.",
-                answers: [
-                    { text: "The primary goal of phishing attacks is to deceive users into revealing sensitive information (such as login credentials, credit card numbers, or personal data) by posing as a trustworthy entity.", correct: true },
-                    { text: "To install antivirus software on the victim’s computer.", correct: false },
-                    { text: "To promote legitimate products or services.", correct: false },
-                ]
-            },
-            {
-                question: "What is the purpose of a phishing email’s urgency or fear tactics?",
-                hint: "Consider how emotional manipulation plays a role in phishing.",
-                explanation: "By inducing panic, phishers hope victims won’t scrutinize the email’s legitimacy.",
-                answers: [
-                    { text: "To encourage recipients to share the email with others.", correct: false },
-                    { text: "To promote awareness about cybersecurity risks.", correct: false },
-                    { text: "Urgency or fear tactics in phishing emails aim to pressure recipients into acting quickly without thinking. Attackers create a sense of emergency, such as “Your account will be suspended unless you act now!”.", correct: true }
-                ]
-            },
-            {
-                question: "What is the term for a phishing attack that targets a specific organization or industry?",
-                hint: "Think about precision and customization.",
-                explanation: "Unlike generic phishing, targeted attacks require research and personalization.",
-                answers: [
-                    { text: "Generic phishing.", correct: false },
-                    { text: "Targeted phishing, also known as spear phishing, focuses on a particular organization, its employees, or industry. Attackers customize messages to increase success rates.", correct: true },
-                    { text: "Mass phishing.", correct: false },
-                ]
-            },
-            {
-                question: "Which type of phishing attack involves fraudulent phone calls?",
-                hint: "Consider the communication channel used in vishing.",
-                explanation: "Vishing relies on voice communication to deceive victims.",
-                answers: [
-                    { text: "SMS phishing.", correct: false },
-                    { text: "Vishing (voice phishing) occurs over the phone. Attackers impersonate legitimate entities, aiming to extract sensitive information from victims.", correct: true },
-                    { text: "Email phishing.", correct: false },
-                ]
-            },
-            {
-                question: "What is the purpose of a phishing landing page?",
-                hint: "Focus on the deceptive nature of landing pages.",
-                explanation: "Landing pages are the final destination where victims unwittingly provide information.",
-                answers: [
-                    { text: "To educate users about cybersecurity.", correct: false },
-                    { text: "To redirect users to legitimate websites.", correct: true },
-                    { text: "Phishing landing pages mimic legitimate sites to collect user credentials or other sensitive data. Victims unknowingly interact with these fake pages.", correct: true },
-                ]
-            },
-            {
-                question: "What is the key difference between phishing and pharming?",
-                hint: "Think about the underlying mechanism in pharming.",
-                explanation: "Pharming alters the domain resolution process.",
-                answers: [
-                    { text: "Phishing uses malicious attachments.", correct: false },
-                    { text: "Phishing involves deceptive emails or messages, while pharming manipulates DNS settings to redirect users to malicious websites without their knowledge.", correct: true },
-                    { text: " Pharming relies on social engineering.", correct: false },
-                ]
-            }
-        ];
     
-        function showAlert(title, message) {
-            console.log("Title:", title);
-            console.log("Message:", message);
-            document.getElementById('popup-title').textContent = title;
-            document.getElementById('popup-message').textContent = message;
-            document.getElementById('popup').style.display = 'block';
+    // Display questions after user select the difficulty level, else it will show alert to choose a level
+    document.getElementById('startButton').addEventListener('click', function() {
+        var difficultyLevel = document.querySelector('input[name="difficultyLevel"]:checked');
+        if (difficultyLevel) {
+            document.getElementById('startContainer').style.display = 'none';
+            document.getElementById('gameForm').style.display = 'block';
+            initializeGame(difficultyLevel.value);
+        } else {
+            alert('Please select a difficulty level to start the assessment.');
         }
-              
+    });
     
-        let wrongAnswer = false;
-
-        document.getElementById('popup-close').addEventListener('click', function() {
-            document.getElementById('popup').style.display = 'none';
-            if (!wrongAnswer) {
-                currentQuestionIndex++;
-                if (currentQuestionIndex < questions.length) {
-                    showQuestion(shuffledQuestions[currentQuestionIndex]);
-                } else {
-                    document.getElementById('score').value = score;
-                    document.getElementById('gameForm').submit();
-                }
-            }
-            // Reset the wrongAnswer flag
-            wrongAnswer = false;
-            updateButton(); // Update the button text
-        });
-
-        document.getElementById('gameForm').addEventListener('submit', (event) => {
-            event.preventDefault();
-            const selectedAnswerIndex = document.querySelector('input[name="answer"]:checked').value;
-            if (questions[currentQuestionIndex].answers[selectedAnswerIndex].correct) {
-                score += 10;
-                showAlert("Explanation", questions[currentQuestionIndex].explanation);
-                // Reset the wrongAnswer flag
-                wrongAnswer = false;
-            } else {
-                showAlert("Hint", questions[currentQuestionIndex].hint);
-                // Set the wrongAnswer flag
-                wrongAnswer = true;
-            }
-            updateButton(); // Update the button text
-        });
-
-        function updateButton() {
-            const button = document.getElementById('popup-close');
-            if (wrongAnswer) {
-                button.textContent = "Try Again";
-            } else {
-                button.textContent = "Next";
-            }
-        }
-            
-        function shuffle(array) {
-            var currentIndex = array.length, temporaryValue, randomIndex;
+    const beginnerQuestions = [
+        {
+            shuffle: true,
+            question: "What is HTML?",
+            hint: "HTML is a markup language used for creating web pages.",
+            explanation: "HTML stands for HyperText Markup Language. It is the standard markup language for creating web pages.",
+            answers: [
+                { text: "Hypertext Markup Language", correct: true },
+                { text: "Hyper Tool Multi-language", correct: false },
+                { text: "Hyperlink and Text Manipulation Language", correct: false }
+            ]
+        },
+        {
+            shuffle: false,
+            question: "What does CSS stand for? - BONUS",
+            hint: "CSS is used for describing the look and formatting of a document written in a markup language.",
+            explanation: "CSS stands for Cascading Style Sheets. It is used to style and layout web pages.",
+            answers: [
+                { text: "Cascading Style Sheets", correct: true },
+                { text: "Computer Style Sheets", correct: false },
+                { text: "Creative Style Sheets", correct: false }
+            ]
+        },
+        {
+            shuffle: true,
+            question: "What is JavaScript primarily used for?",
+            hint: "JavaScript is often used to create dynamic and interactive effects on web pages.",
+            explanation: "JavaScript is a programming language commonly used to create interactive effects within web browsers.",
+            answers: [
+                { text: "Adding interactivity to web pages", correct: true },
+                { text: "Styling web pages", correct: false },
+                { text: "Structuring web pages", correct: false }
+            ]
+        },
+        // Add more beginner questions here
+    ];
     
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
+    const intermediateQuestions = [
+        {
+            question: "What is a closure in JavaScript?",
+            hint: "Closures are an important concept in JavaScript.",
+            explanation: "A closure is the combination of a function bundled together with references to its surrounding state.",
+            answers: [
+                { text: "A function that has access to its outer scope even after the outer scope has closed", correct: true },
+                { text: "A function that closes the browser window", correct: false },
+                { text: "A function that is used to close an open connection in a database", correct: false }
+            ]
+        },
+        {
+            question: "What is an API?",
+            hint: "An API allows different software systems to communicate with each other.",
+            explanation: "API stands for Application Programming Interface. It is a set of rules that allows one software application to interact with another.",
+            answers: [
+                { text: "Application Programming Interface", correct: true },
+                { text: "Applied Protocol Interaction", correct: false },
+                { text: "Automated Program Interface", correct: false }
+            ]
+        },
+        {
+            question: "What is the purpose of a RESTful API?",
+            hint: "RESTful APIs follow a specific set of rules for creating web services.",
+            explanation: "A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST, and DELETE data. It is designed to take advantage of existing protocols.",
+            answers: [
+                { text: "To allow communication between clients and servers using HTTP", correct: true },
+                { text: "To create complex user interfaces", correct: false },
+                { text: "To store data in a database", correct: false }
+            ]
+        },
+        // Add more intermediate questions here
+    ];
     
-                // Pick a remaining element...
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex -= 1;
+    const professionalQuestions = [
+        {
+            question: "What is the concept of prototypal inheritance in JavaScript?",
+            hint: "Prototypal inheritance is a core concept in JavaScript.",
+            explanation: "Prototypal inheritance is the mechanism by which objects in JavaScript inherit properties and methods from other objects.",
+            answers: [
+                { text: "In JavaScript, objects inherit properties and methods directly from other objects, rather than from classes like in traditional inheritance.", correct: true },
+                { text: "Prototypal inheritance refers to inheriting properties and methods from classes.", correct: false },
+                { text: "Prototypal inheritance is not supported in JavaScript.", correct: false }
+            ]
+        },
+        {
+            question: "What is a JavaScript Promise?",
+            hint: "Promises are used to handle asynchronous operations.",
+            explanation: "A Promise is an object representing the eventual completion or failure of an asynchronous operation. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason.",
+            answers: [
+                { text: "An object representing the eventual completion or failure of an asynchronous operation", correct: true },
+                { text: "A method to execute synchronous code", correct: false },
+                { text: "A function that resolves immediately", correct: false }
+            ]
+        },
+        {
+            question: "What is the significance of the 'this' keyword in JavaScript?",
+            hint: "The 'this' keyword refers to the object it belongs to.",
+            explanation: "In JavaScript, the 'this' keyword refers to the object it belongs to. It has different values depending on where it is used.",
+            answers: [
+                { text: "Refers to the object it belongs to", correct: true },
+                { text: "Refers to the global object", correct: false },
+                { text: "Refers to the function it is used in", correct: false }
+            ]
+        },
+        // Add more professional questions here
+    ];
     
-                // And swap it with the current element.
-                temporaryValue = array[currentIndex];
-                array[currentIndex] = array[randomIndex];
-                array[randomIndex] = temporaryValue;
-            }
     
-            return array;
+    let shuffledQuestions;
+    let currentQuestionIndex;
+    let score;
+    let currentAnswerCorrect = false;
+    let currentDifficulty;
+    
+    function initializeGame(difficulty) {
+        currentDifficulty = difficulty;
+        let questions;
+    
+        if (difficulty === 'beginner') {
+            questions = beginnerQuestions;
+        } else if (difficulty === 'intermediate') {
+            questions = intermediateQuestions;
+        } else if (difficulty === 'professional') {
+            questions = professionalQuestions;
         }
     
-        // Shuffle the questions
-        let shuffledQuestions = shuffle(questions);
+        let nonShuffledQuestions = questions.filter(q => !q.shuffle);
+        let shuffledQuestionsList = shuffle(questions.filter(q => q.shuffle));
     
-        let currentQuestionIndex = 0;
-        let score = 0;
+        shuffledQuestions = shuffledQuestionsList.concat(nonShuffledQuestions);
+        currentQuestionIndex = 0;
+        score = 0;
     
+        populateQuestion(shuffledQuestions[currentQuestionIndex]);
+    }
     
-        function showQuestion(question) {
-            const questionContainer = document.getElementById('question-container');
-            questionContainer.innerHTML = `
+    function populateQuestion(question) {
+        const questionContainer = document.getElementById('question-container');
+        questionContainer.innerHTML = `
             <div>
                 <p class="text-2xl mb-5">${question.question}</p>
                 ${question.answers.map((answer, index) => `
@@ -239,10 +229,100 @@
                     </div>
                 `).join('')}
             </div>
-            `;
+        `;
+    }
+    
+    document.getElementById('checkButton').addEventListener('click', () => {
+        const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+        if (selectedAnswer) {
+            const index = parseInt(selectedAnswer.value);
+            const currentQuestion = shuffledQuestions[currentQuestionIndex];
+            const correct = currentQuestion.answers[index].correct;
+    
+            updateScore(correct, currentQuestion.shuffle);
+    
+            if (correct) {
+                currentAnswerCorrect = true;
+                showAlert("Explanation", currentQuestion.explanation);
+            } else {
+                currentAnswerCorrect = false;
+                showAlert("Hint", currentQuestion.hint);
+            }
+        } else {
+            alert('Please select an answer.');
+        }
+    });
+    
+    document.getElementById('popup-close').addEventListener('click', () => {
+        document.getElementById('popup').style.display = 'none';
+    
+        currentQuestionIndex++;
+    
+        if (currentQuestionIndex < shuffledQuestions.length) {
+            populateQuestion(shuffledQuestions[currentQuestionIndex]);
+        } else {
+            document.getElementById('score').value = score;
+            document.getElementById('gameForm').submit();
+        }
+    });
+    
+    function updateScore(correct, shuffle) {
+        let scoreChange = 0;
+    
+        if (currentDifficulty === 'beginner') {
+            scoreChange = shuffle ? (correct ? 1 : -0.5) : (correct ? 5 : -3);
+        } else if (currentDifficulty === 'intermediate') {
+            scoreChange = shuffle ? (correct ? 5 : -2.5) : (correct ? 10 : -7);
+        } else if (currentDifficulty === 'professional') {
+            scoreChange = shuffle ? (correct ? 10 : -5) : (correct ? 20 : -18);
         }
     
-        showQuestion(shuffledQuestions[currentQuestionIndex]);
+        score += scoreChange;
+        document.getElementById('score').value = score;
+    }
+    
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+    
+    function showAlert(title, message) {
+        document.getElementById('popup-title').textContent = title;
+        document.getElementById('popup-message').textContent = message;
+        document.getElementById('popup').style.display = 'block';
+    }
+    
+    function title(totalQuestions, totalQuestionsAnswered) {
+        var twentyPercent = 0.2 * 100;
+        var fortyPercent = 0.4 * 100;
+        var sixtyPercent = 0.6 * 100;
+        var eightyPercent = 0.8 * 100;
+        
+        var calculatedTitle;
+        var tracker = totalQuestionsAnswered / totalQuestions;
+
+        if (tracker < twentyPercent) {
+            calculatedTitle = "Phishing Awareness Level 1: The Unaware User";
+        } else if (tracker > twentyPercent && tracker < fortyPercent) {
+            calculatedTitle = "Phishing Awareness Level 2: The Cautious Beginner";
+        } else if (tracker > fortyPercent && tracker < sixtyPercent) {
+            calculatedTitle = "Phishing Awareness Level 3: The Informed User";
+        } else if (tracker > sixtyPercent && tracker < eightyPercent) {
+            calculatedTitle = "Phishing Awareness Level 4: The Savvy Defender";
+        } else {
+            calculatedTitle = "Phishing Awareness Level 5: The Expert Analyst";
+        }
+
+    }
+    
     </script>
     
-{% endblock %}
+    {% endblock %}
+    

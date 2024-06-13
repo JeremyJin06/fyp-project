@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request, session, flash
+from flask import Flask, render_template, redirect, url_for, request, session, flash, request
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 
@@ -69,14 +69,13 @@ def register():
         password = request.form['password']
         email = request.form['email']
         name = request.form['name']
-        title = "Rookie"
-        score = 0
+        score = 0.0
         hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
         
         conn = sqlite3.connect('users.db')
         c = conn.cursor()
         try:
-            c.execute('INSERT INTO users (username, password, email, name, title, score) VALUES (?, ?, ?, ?, ?, ?)', (username, hashed_password, email, name, title, score))
+            c.execute('INSERT INTO users (username, password, email, name, title, score) VALUES (?, ?, ?, ?, ?, ?)', (username, hashed_password, email, name, score))
             conn.commit()
             flash('Registration successful, please log in.', 'success')
             return redirect(url_for('login'))
@@ -97,15 +96,8 @@ def phishing_gamified():
     title = ""
     if 'username' in session:
         if request.method == 'POST':
-            score = int(request.form['score'])
-            # Set the title based on score points
-            if score >= 80:
-                title = "Professional"
-            elif score >= 50:
-                title = "Amateur"
-            else:
-                title = "Rookie"
-                            
+            score = float(request.form['score'])
+            title = ""
             conn = sqlite3.connect('users.db')
             c = conn.cursor()
             # Append the title and score on the current user into the database record.
@@ -115,6 +107,8 @@ def phishing_gamified():
             return redirect(url_for('leaderboard'))
         return render_template('phishing_gamified.html', username=session['username'])
     return redirect(url_for('login'))
+
+
 
 @app.route('/leaderboard')
 def leaderboard():

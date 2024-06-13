@@ -54,7 +54,6 @@
     </form>
 </div>
 
-
 <div id="popup" tabindex="-1" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
     <div class="relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md">
         <div class="bg-white rounded-lg shadow-lg">
@@ -85,6 +84,7 @@ document.getElementById('startButton').addEventListener('click', function() {
 
 const beginnerQuestions = [
     {
+        shuffle: true,
         question: "What is HTML?",
         hint: "HTML is a markup language used for creating web pages.",
         explanation: "HTML stands for HyperText Markup Language. It is the standard markup language for creating web pages.",
@@ -95,7 +95,8 @@ const beginnerQuestions = [
         ]
     },
     {
-        question: "What does CSS stand for?",
+        shuffle: false,
+        question: "What does CSS stand for? - BONUS",
         hint: "CSS is used for describing the look and formatting of a document written in a markup language.",
         explanation: "CSS stands for Cascading Style Sheets. It is used to style and layout web pages.",
         answers: [
@@ -105,6 +106,7 @@ const beginnerQuestions = [
         ]
     },
     {
+        shuffle: true,
         question: "What is JavaScript primarily used for?",
         hint: "JavaScript is often used to create dynamic and interactive effects on web pages.",
         explanation: "JavaScript is a programming language commonly used to create interactive effects within web browsers.",
@@ -185,13 +187,16 @@ const professionalQuestions = [
     // Add more professional questions here
 ];
 
-
 let shuffledQuestions;
 let currentQuestionIndex;
-let score;
+let score = 0.0;
 let currentAnswerCorrect = false;
+let currentDifficulty;
+let totalQuestionsAnswered = 0;
+const totalQuestions = beginnerQuestions.length + intermediateQuestions.length + professionalQuestions.length;
 
 function initializeGame(difficulty) {
+    currentDifficulty = difficulty;
     let questions;
 
     if (difficulty === 'beginner') {
@@ -202,9 +207,12 @@ function initializeGame(difficulty) {
         questions = professionalQuestions;
     }
 
-    shuffledQuestions = shuffle([...questions]);
+    let nonShuffledQuestions = questions.filter(q => !q.shuffle);
+    let shuffledQuestionsList = shuffle(questions.filter(q => q.shuffle));
+
+    shuffledQuestions = shuffledQuestionsList.concat(nonShuffledQuestions);
     currentQuestionIndex = 0;
-    score = 0;
+    score = parseFloat(localStorage.getItem('score')) || 0.0;
 
     populateQuestion(shuffledQuestions[currentQuestionIndex]);
 }
@@ -229,9 +237,12 @@ document.getElementById('checkButton').addEventListener('click', () => {
     if (selectedAnswer) {
         const index = parseInt(selectedAnswer.value);
         const currentQuestion = shuffledQuestions[currentQuestionIndex];
-        if (currentQuestion.answers[index].correct) {
+        const correct = currentQuestion.answers[index].correct;
+
+        updateScore(correct, currentQuestion.shuffle);
+
+        if (correct) {
             currentAnswerCorrect = true;
-            score += 1;
             showAlert("Explanation", currentQuestion.explanation);
         } else {
             currentAnswerCorrect = false;
@@ -249,11 +260,31 @@ document.getElementById('popup-close').addEventListener('click', () => {
         if (currentQuestionIndex < shuffledQuestions.length) {
             populateQuestion(shuffledQuestions[currentQuestionIndex]);
         } else {
-            document.getElementById('score').value = score;
+            localStorage.setItem('score', score);
+            document.getElementById('score').value = score.toFixed(2);
             document.getElementById('gameForm').submit();
         }
+         //To calculate the total answered question from users
+        totalQuestionsAnswered++;
+        console.log(totalQuestionsAnswered);
     }
+
 });
+
+function updateScore(correct, shuffle) {
+    let scoreChange = 0;
+
+    if (currentDifficulty === 'beginner') {
+        scoreChange = shuffle ? (correct ? 1.0 : -0.5) : (correct ? 5.0 : -3.0);
+    } else if (currentDifficulty === 'intermediate') {
+        scoreChange = shuffle ? (correct ? 5 : -2.5) : (correct ? 10 : -7);
+    } else if (currentDifficulty === 'professional') {
+        scoreChange = shuffle ? (correct ? 10 : -5) : (correct ? 20 : -18);
+    }
+
+    score += scoreChange;
+    document.getElementById('score').value = score.toFixed(2);
+}
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;

@@ -3,7 +3,7 @@
 {% block content %}
 <div class="bg-white shadow-lg rounded-lg p-8">
     <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Register</h2>
-    <form method="POST">
+    <form method="POST" id="passwordForm">
         <div class="mb-4">
             <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
             <input type="text" name="username" id="username" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
@@ -20,7 +20,12 @@
             <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
             <input type="password" name="password" id="password" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
         </div>
-        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200 mb-4">Register</button>
+        <div class="mb-4">
+            <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+            <input type="password" name="confirm_password" id="confirm_password" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+            <div id="passwordError" class="text-red-500 text-xs italic hidden">Passwords do not match</div>
+        </div>
+        <button type="submit" class="mt-5 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200 mb-4">Register</button>
     </form>
     {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -38,4 +43,21 @@
         <a href="{{ url_for('login') }}" class="text-blue-600 hover:underline">Login</a>
     </div>
 </div>
+
+
+<script>
+    document.getElementById("passwordForm").addEventListener("submit", function (event) {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirm_password").value;
+        var errorDiv = document.getElementById("passwordError");
+
+        if (password !== confirmPassword) {
+            event.preventDefault();
+            errorDiv.classList.remove("hidden");
+        } else {
+            errorDiv.classList.add("hidden");
+        }
+    });
+</script>
+
 {% endblock %}
